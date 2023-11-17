@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../styles/MessageList.css">
+   <link rel="stylesheet" href="../styles/ChatPage.css">
+   <link rel="stylesheet" href="../styles/UserList.css">
+   <link rel="stylesheet" href="../styles/ModalImage.css">
+   <title>Chat</title>
+   <link rel="icon" href="../assets/icon/favicon-32x32.png" type="image/x-icon">
+</head>
+
+<body>
+   <div class='chat'>
+
+      <div class='userList '>
+         <h1 class="userTotalCount">Всего пользователей: </h1>
+      </div>
+
+      <div class="list">
+         <div class="messageListLoader">
+            <img src="../assets/preloader/11.gif" />
+         </div>
+      </div>
+
+      <div class='bottomField'>
+         <div class='inputField'>
+            <div class='gridInputContainer'>
+
+               <div class="uploadClip">
+                  <img src="../assets/svg/paperclip.svg" onclick=uploadFile()>
+               </div>
+
+               <input type="file" id="fileInput" style="display: none;">
+
+               <input class='inputMessage' placeholder='Напишите сообщение...' value="" maxlength="2000">
+
+               <div class='submitButton'>
+                  <img src="../assets/svg/send.svg" onclick=submitInputs()>
+               </div>
+
+            </div>
+         </div>
+      </div>
+
+      <div class='modalImage' onclick=showModalPicture()>
+         <img src="../assets/svg/send.svg"></img>
+      </div>
+
+
+   </div>
+
+
+
+   <script src="../../node_modules/socket.io-client/dist//socket.io.js"></script>
+   <script src="../socket/socket.js"></script>
+   <script src="../utils/getCurrentDate.js"></script>
+   <script src="../utils/nameAvatarGenerator.js"></script>
+   <script src="../utils/refreshList.js"></script>
+
+   <script src="./modalImage.js"></script>
+   <script src="./chatPage.js"></script>
+   <script src="./messageList.js"></script>
+   <script src="./userList.js"></script>
+
+
+</body>
+
+</html>
