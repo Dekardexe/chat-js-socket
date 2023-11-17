@@ -1,6 +1,3 @@
-// {getCurrentDate} from utils/getCurrentDate.js
-
-
 function submitInputs() {
     const fileInput = document.getElementById('fileInput').files;
     const input = document.querySelector(`.inputMessage`).value;
@@ -26,6 +23,7 @@ function submitInputs() {
         else {
             socket.emit('sendMessage', input, getCurrentDate())
         }
+
         document.getElementById('fileInput').value = "";
         document.querySelector('.inputMessage').value = "";
     }
@@ -35,7 +33,7 @@ function uploadFile() {
     document.getElementById("fileInput").click();
 }
 
-{
+function addListener() {
     const inputElement = document.querySelector('.inputMessage');
     inputElement.addEventListener('keyup', function (event) {
         if (event.key === 'Enter') {
@@ -43,3 +41,5 @@ function uploadFile() {
         }
     });
 }
+
+addListener();

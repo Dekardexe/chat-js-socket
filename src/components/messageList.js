@@ -1,45 +1,39 @@
-//{showModalPicture} from modalImage.js
-//{refreshList} from utils/refreshList.js
-
-
-
-socket.on('sendMessageFromServer', (message) => {
-   renderMessage(message);
-   scrollMessageList();
-});
-
-socket.on('messageListFromServer', (messages) => {
-   if(messages.length === 0){
-      document.querySelector(`.messageListLoader`).style = "display: none";
-   }
-   else{
-      refreshList('list', 'chat');
-
-      messages.forEach(message => {
-         renderMessage(message);
-      });
-
+function setupSocket(socket) {
+   socket.on('sendMessageFromServer', (message) => {
+      renderMessage(message);
       scrollMessageList();
-   }
+   });
+   
+   socket.on('messageListFromServer', (messages) => {
+      if(messages.length === 0){
+         document.querySelector(`.messageListLoader`).style = "display: none";
+      }
+      else{
+         refreshList('list', 'chat');
+   
+         messages.forEach(message => {
+            renderMessage(message);
+         });
+   
+         scrollMessageList();
+      }
+   });
+}
 
-
-
-});
+setupSocket(socket);
 
 function clickPicture(image) {
    showModalPicture(image);
 }
 
-
 function renderMessage(message) {
    const messageLsit = document.querySelector(`.list`);
    const newMessage = document.createElement('div');
 
-
    const isMe = ((sessionStorage['userName'] === message.name) && (sessionStorage['userAvatar'] === message.avatar))
       ? "myMessage" : "message";
-
    const hasPicture = (message.image) ? "textWithImage" : "";
+
 
    const imageHTMLSource = (message.image) ? `
    <div class="messagePicture" onclick=clickPicture("${message.image}")>

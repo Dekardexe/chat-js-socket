@@ -1,10 +1,6 @@
-//{refreshList} from utils/refreshList.js
-// {randomNameGenerator, getUserAvatar} from utils/nameAvatarGenerator.js
-
 registerUser();
 
 socket.on('userListFromServer', (users) => {
-
    content = `<h1 class="userCounter">Всего пользователей: </h1>`;
    refreshList('userList', 'chat', content);
 
