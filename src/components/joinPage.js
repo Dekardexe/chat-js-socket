@@ -1,7 +1,7 @@
 
 
 function pageRelocation(){
-   window.location.href = "./chatPage.html";
+   window.location.href = "./src/components/chatPage.html";
 }
 
 
